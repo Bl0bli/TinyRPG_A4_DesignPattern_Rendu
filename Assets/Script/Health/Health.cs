@@ -34,7 +34,6 @@ public class Health : MonoBehaviour, IHealth
         if (amount < 0)
         {
             Debug.LogError($"[HEALTH] - Heal() - Euh frero tu fais de la merde, tema la valeur de amount {amount} elle est négative");
-
             return;
         }
 
