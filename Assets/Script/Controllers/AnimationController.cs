@@ -26,6 +26,10 @@ public class AnimationController : MonoBehaviour
         }
     }
 
+    public void OnAttack(AAttack attack) {
+        _animator.SetTrigger(attack.Trigger);
+    }
+    
     private void SetDie()
     {
         _animator.SetTrigger("Die");
