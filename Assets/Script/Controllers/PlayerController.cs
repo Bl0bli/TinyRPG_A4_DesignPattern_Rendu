@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Transform _visualTransform;
 
-    [Header("Params")] 
-    [SerializeField] private float _speed = 1f;
+    private PlayerStats _stats;
 
     [SerializeField] private float _lerpRotationSpeed = 10f;
     
@@ -33,7 +32,11 @@ public class PlayerController : MonoBehaviour
         
         _iaMove.action.Disable();
     }
-    
+
+    private void Start() {
+        _stats = Resources.Load<PlayerStats>("PlayerStats");
+    }
+
     private void HandleMove(InputAction.CallbackContext context)
     {
         Vector2 ctx = context.ReadValue<Vector2>();
@@ -48,7 +51,7 @@ public class PlayerController : MonoBehaviour
     
     private void Move()
     {
-        _rb.linearVelocity = _moveDirection * (_speed * Time.fixedDeltaTime);
+        _rb.linearVelocity = _moveDirection * (_stats.CurrentSpeed * Time.fixedDeltaTime);
         if (_moveDirection.sqrMagnitude > 0)
         {
             _visualTransform.forward = Vector3.Lerp(_visualTransform.forward, _moveDirection, Time.fixedDeltaTime * _lerpRotationSpeed);

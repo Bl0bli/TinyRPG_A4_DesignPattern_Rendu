@@ -36,6 +36,7 @@ public class PlayerAttack : MonoBehaviour
 
      private void Attack() {
           AAttack attack = Instantiate(_playerAttack, transform, false);
+          attack.SourceStats = Resources.Load<PlayerStats>("PlayerStats"); //TODO le faire au start
           _onAttack?.Invoke(attack);
      }
      
