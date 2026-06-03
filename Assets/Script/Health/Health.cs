@@ -17,6 +17,11 @@ public class Health : MonoBehaviour, IHealth
     
     public void TakeDamage(int damage)
     {
+        if (damage < 0)
+        {
+            Debug.LogError($"[HEALTH] - TakeDamage() - Euh frero tu fais de la merde, tema la valeur de damage {damage} elle est négative");
+            return;
+        }
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
@@ -26,6 +31,13 @@ public class Health : MonoBehaviour, IHealth
 
     public void Heal(int amount)
     {
+        if (amount < 0)
+        {
+            Debug.LogError($"[HEALTH] - Heal() - Euh frero tu fais de la merde, tema la valeur de amount {amount} elle est négative");
+
+            return;
+        }
+
         if (_isDead) return;
         _currentHealth += amount;
         if (_currentHealth > _maxHealth)
