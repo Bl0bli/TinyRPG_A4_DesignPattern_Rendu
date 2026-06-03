@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private InputActionReference _iaMove;
-    [SerializeField] private InputActionReference _iaAttack;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Transform _visualTransform;
 
