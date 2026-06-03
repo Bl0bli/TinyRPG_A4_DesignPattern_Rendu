@@ -2,13 +2,41 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IHealth
 {
+    [Header("Params")] 
+    [SerializeField] private int _maxHealth = 10;
+    
+    private int _currentHealth;
+    private bool _isDead;
+    
+    public bool IsDead => _isDead;
+    
+    private void Start()
+    {
+        _currentHealth = _maxHealth;
+    }
+    
     public void TakeDamage(int damage)
     {
-        throw new System.NotImplementedException();
+        _currentHealth -= damage;
+        if (_currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     public void Heal(int amount)
     {
-        throw new System.NotImplementedException();
+        if (_isDead) return;
+        _currentHealth += amount;
+        if (_currentHealth > _maxHealth)
+        {
+            _currentHealth = _maxHealth;
+        }
     }
+
+    private void Die()
+    {
+        _isDead = true;
+    }
+    
 }

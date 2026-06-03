@@ -2,25 +2,26 @@ using UnityEngine;
 
 public class HealthProxy : MonoBehaviour, IHealth
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("References")]
+    [SerializeField] private IHealth _health;
 
     public void TakeDamage(int damage)
     {
-        throw new System.NotImplementedException();
+        if (_health == null)
+        {
+            Debug.LogError($"Health component not found, can't take damage");
+            return;
+        }
+        _health.TakeDamage(damage);
     }
 
     public void Heal(int amount)
     {
-        throw new System.NotImplementedException();
+        if (_health == null)
+        {
+            Debug.LogError($"Health component not found, can't heal");
+            return;
+        }
+        _health.Heal(amount);
     }
 }
