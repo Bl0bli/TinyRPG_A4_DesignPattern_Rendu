@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IHealth
@@ -7,6 +8,9 @@ public class Health : MonoBehaviour, IHealth
     
     private int _currentHealth;
     private bool _isDead;
+
+    public event Action OnDie;
+    public event Action OnTakeDamage;
     
     public bool IsDead => _isDead;
     
@@ -25,6 +29,7 @@ public class Health : MonoBehaviour, IHealth
 
         if (_currentHealth <= 0) return;
         _currentHealth -= damage;
+        OnTakeDamage?.Invoke();
         if (_currentHealth <= 0)
         {
             Die();
@@ -50,6 +55,7 @@ public class Health : MonoBehaviour, IHealth
     private void Die()
     {
         _isDead = true;
+        OnDie?.Invoke();
     }
     
 }
