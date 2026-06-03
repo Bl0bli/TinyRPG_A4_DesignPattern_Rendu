@@ -18,6 +18,10 @@ public class AnimationController : MonoBehaviour
         pc.OnMove += SetWalkSpeed;
     }
 
+    public void OnAttack(AAttack attack) {
+        _animator.SetTrigger(attack.Trigger);
+    }
+    
     private void SetWalkSpeed(float speed)
     {
         if (speed <= 0.0001)
