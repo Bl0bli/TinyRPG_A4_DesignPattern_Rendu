@@ -8,42 +8,38 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputActionReference _iaMove;
     [SerializeField] private InputActionReference _iaAttack;
     [SerializeField] private Rigidbody _rb;
+    [SerializeField] private Transform _visualTransform;
 
     [Header("Params")] 
     [SerializeField] private float _speed = 1f;
+
+    [SerializeField] private float _lerpRotationSpeed = 10f;
     
-    Vector2 _moveDirection;
+    Vector3 _moveDirection;
+    
+    public event Action<float> OnMove;
 
     private void OnEnable()
     {
         _iaMove.action.performed += HandleMove;
         _iaMove.action.canceled += HandleMove;
-        _iaAttack.action.started += HandleAttack;
-        _iaAttack.action.canceled += HandleAttack;
         
         _iaMove.action.Enable();
-        _iaAttack.action.Enable();
     }
 
     private void OnDisable()
     {
         _iaMove.action.performed -= HandleMove;
         _iaMove.action.canceled -= HandleMove;
-        _iaAttack.action.started -= HandleAttack;
-        _iaAttack.action.canceled -= HandleAttack;
         
         _iaMove.action.Disable();
-        _iaAttack.action.Disable();
     }
     
     private void HandleMove(InputAction.CallbackContext context)
     {
-        _moveDirection = context.ReadValue<Vector2>();
-    }
-
-    private void HandleAttack(InputAction.CallbackContext context)
-    {
-        
+        Vector2 ctx = context.ReadValue<Vector2>();
+        _moveDirection = new Vector3(ctx.x, 0, ctx.y);
+        OnMove?.Invoke(_moveDirection.magnitude > 0 ? 1f : 0f);
     }
 
     private void FixedUpdate()
@@ -53,7 +49,10 @@ public class PlayerController : MonoBehaviour
     
     private void Move()
     {
-        _rb.linearVelocity += (Vector3)_moveDirection * (_speed * Time.fixedDeltaTime);
-        Debug.Log($"dir {_moveDirection} | speed {_speed} | velocity {_rb.linearVelocity} | time {Time.fixedDeltaTime} | calc {(Vector3)_moveDirection * (_speed * Time.fixedDeltaTime)}");
+        _rb.linearVelocity = _moveDirection * (_speed * Time.fixedDeltaTime);
+        if (_moveDirection.sqrMagnitude > 0)
+        {
+            _visualTransform.forward = Vector3.Lerp(_visualTransform.forward, _moveDirection, Time.fixedDeltaTime * _lerpRotationSpeed);
+        }
     }
 }

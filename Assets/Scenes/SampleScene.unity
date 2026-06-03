@@ -5201,6 +5201,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d68d1e38da0311479c8004fc150be37, type: 3}
+--- !u!4 &383447003 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8019267730992289373, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 164211095928399044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &383447004 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4017012815927045721, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 164211095928399044}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &384042746
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -20570,7 +20582,23 @@ MonoBehaviour:
   _iaAttack: {fileID: -2080270526356168065, guid: 1d6993ecd4729416c9093616829d1212,
     type: 3}
   _rb: {fileID: 164211095928399046}
-  _speed: 1
+  _visualTransform: {fileID: 383447003}
+  _speed: 750
+  _lerpRotationSpeed: 10
+--- !u!114 &1406124743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406124739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f041af7e5f7848d49a56aad96931fa93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 383447004}
+  _duration: 0.25
 --- !u!1001 &1407021223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29543,6 +29571,11 @@ PrefabInstance:
       propertyPath: _drawDebugGizmo
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9115170152858762924, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29551,6 +29584,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1406124741}
+    - targetCorrespondingSourceObject: {fileID: 1105718103604369012, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1406124743}
   m_SourcePrefab: {fileID: 100100000, guid: 8b89fdb0c71dd438b9b7b0ef242463bc, type: 3}
 --- !u!4 &164211095928399045 stripped
 Transform:
