@@ -22,6 +22,8 @@ public class Health : MonoBehaviour, IHealth
             Debug.LogError($"[HEALTH] - TakeDamage() - Euh frero tu fais de la merde, tema la valeur de damage {damage} elle est négative");
             return;
         }
+
+        if (_currentHealth <= 0) return;
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
