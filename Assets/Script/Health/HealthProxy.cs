@@ -3,7 +3,7 @@ using UnityEngine;
 public class HealthProxy : MonoBehaviour, IHealth
 {
     [Header("References")]
-    [SerializeField] private IHealth _health;
+    [SerializeField] private Health _health;
 
     public void TakeDamage(int damage)
     {
