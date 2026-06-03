@@ -11,6 +11,9 @@ public class Health : MonoBehaviour, IHealthStats
     private int _currentHealth;
     private bool _isDead;
 
+    public event Action OnDie;
+    public event Action OnTakeDamage;
+
     public bool IsDead => _isDead;
 
     int IHealthStats.BaseHealth
@@ -38,6 +41,7 @@ public class Health : MonoBehaviour, IHealthStats
 
         if (_currentHealth <= 0) return;
         _currentHealth -= damage;
+        OnTakeDamage?.Invoke();
         if (_currentHealth <= 0)
         {
             Die();
@@ -63,6 +67,7 @@ public class Health : MonoBehaviour, IHealthStats
     private void Die()
     {
         _isDead = true;
+        OnDie?.Invoke();
     }
     
 }
