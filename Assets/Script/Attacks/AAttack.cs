@@ -8,6 +8,8 @@ public abstract class AAttack : MonoBehaviour
     [SerializeField] private float _lastingDuration;
     [SerializeField] private string _animationTrigger;
 
+    public IStats SourceStats { get; set; }
+
     public string Trigger => _animationTrigger;
 
     private void Start() {

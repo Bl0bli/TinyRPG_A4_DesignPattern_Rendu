@@ -1,24 +1,37 @@
 using System;
 using UnityEngine;
 
-public class Health : MonoBehaviour, IHealth
+public class Health : MonoBehaviour, IHealthStats
 {
     [Header("Params")] 
     [SerializeField] private int _maxHealth = 10;
+
+    [SerializeField] private bool _isPlayer; //C'est un peu dégeu mdr;
     
     private int _currentHealth;
     private bool _isDead;
 
     public event Action OnDie;
     public event Action OnTakeDamage;
-    
+
     public bool IsDead => _isDead;
-    
-    private void Start()
+
+    int IHealthStats.BaseHealth
     {
-        _currentHealth = _maxHealth;
+        get => _maxHealth;
+        set => _maxHealth = value;
     }
-    
+
+    int IHealthStats.CurrentHealth { 
+        get => _currentHealth; 
+        set => _currentHealth = value;
+    }
+
+    private void Start() {
+        if (_isPlayer) Resources.Load<PlayerStats>("PlayerStats").Init(this);
+        else _currentHealth = _maxHealth;
+    }
+
     public void TakeDamage(int damage)
     {
         if (damage < 0)
