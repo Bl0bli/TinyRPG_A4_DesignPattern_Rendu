@@ -12,6 +12,7 @@ public partial class MoveNpcAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> NPC;
     [SerializeReference] public BlackboardVariable<Detector> Dectetor;
     [SerializeReference] public BlackboardVariable<string> AnimatorSpeedParam = new BlackboardVariable<string>("WalkSpeed");
+    [SerializeReference] public BlackboardVariable<float> StopDistance = new BlackboardVariable<float>(2f);
     
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -35,6 +36,13 @@ public partial class MoveNpcAction : Action
         
         GameObject target = Dectetor.Value.GetNearestTarget();
         if (target == null) return Status.Failure;
+        
+        float distance = Vector3.Distance(NPC.Value.transform.position, target.transform.position);
+
+        if (distance <= StopDistance.Value)
+        {
+            return Status.Success;
+        }
         
         _agent.SetDestination(target.transform.position);
         if (_animator != null)
