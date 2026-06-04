@@ -28,7 +28,8 @@ public class Health : MonoBehaviour, IHealthStats
     }
 
     private void Start() {
-        if(_isPlayer) Resources.Load<PlayerStats>("PlayerStats").Init(this);
+        if (_isPlayer) Resources.Load<PlayerStats>("PlayerStats").Init(this);
+        else _currentHealth = _maxHealth;
     }
 
     public void TakeDamage(int damage)
