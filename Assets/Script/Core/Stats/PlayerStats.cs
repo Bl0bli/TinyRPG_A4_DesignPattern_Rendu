@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerStats", menuName = "Core/PlayerStats")]
-public class PlayerStats : ScriptableObject, IStats
+public class PlayerStats : ScriptableObject, IStats, IReadOnlyStats
 {
     [field: SerializeField] public int BaseHealth { get; private set; }
     [field: SerializeField] public int BaseAttack{ get; private set; }

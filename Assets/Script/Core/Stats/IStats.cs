@@ -2,9 +2,15 @@ using UnityEngine;
 
 public interface IStats
 {
-    public int CurrentHealth { get; }
-    public int CurrentAttack{ get; }
-    public int CurrentMagic{ get;  }
-    public int CurrentDefense{ get; }
-    public int CurrentSpeed { get;  }
+    public IHealth Health { get; }
+    
+    public int BaseAttack{ get; }
+    public int BaseMagic{ get; }
+    public int BaseDefense{ get; }
+    public int BaseSpeed { get; }
+    
+    public int CurrentAttack{ get; set; }
+    public int CurrentMagic{ get; set;}
+    public int CurrentDefense{ get; set; }
+    public int CurrentSpeed { get; set; }
 }
