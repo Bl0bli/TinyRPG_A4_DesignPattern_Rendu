@@ -17,8 +17,7 @@ public class EffectManager : MonoBehaviour
 
         while (accumulator > TickDelay) {
             accumulator -= TickDelay;
-            foreach (IEffect effect in _effects) {
-                if(effect.ShouldDestroy) continue;
+            foreach (IEffect effect in _effects.Where(effect => !effect.ShouldDestroy)) {
                 effect.Apply(_managedStatSheet);
             }
             Cleanse();

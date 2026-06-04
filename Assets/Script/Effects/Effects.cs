@@ -14,8 +14,8 @@ public class Both : IEffect
     public bool ShouldDestroy => _a.ShouldDestroy && _b.ShouldDestroy;
     
     public void Apply(IStats stats) {
-        _a.Apply(stats);
-        _b.Apply(stats);
+        if(!_a.ShouldDestroy) _a.Apply(stats);
+        if(!_b.ShouldDestroy) _b.Apply(stats);
     }
 }
 
