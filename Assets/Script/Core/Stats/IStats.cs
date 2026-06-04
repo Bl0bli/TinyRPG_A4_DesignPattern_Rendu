@@ -13,4 +13,6 @@ public interface IStats
     public int CurrentMagic{ get; set;}
     public int CurrentDefense{ get; set; }
     public int CurrentSpeed { get; set; }
+
+    public void ResetStats();
 }
