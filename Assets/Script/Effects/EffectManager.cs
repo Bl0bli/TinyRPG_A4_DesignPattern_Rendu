@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class EffectManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class EffectManager : MonoBehaviour
 
         while (accumulator > TickDelay) {
             accumulator -= TickDelay;
+            _managedStatSheet.ResetStats();
             foreach (IEffect effect in _effects.Where(effect => !effect.ShouldDestroy)) {
                 effect.Apply(_managedStatSheet);
             }

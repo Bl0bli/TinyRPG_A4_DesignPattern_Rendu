@@ -33,4 +33,11 @@ public class PlayerStats : ScriptableObject, IStats, IReadOnlyStats
         CurrentMagic = BaseMagic;
         CurrentSpeed = BaseSpeed;
     }
+    
+    public void ResetStats() {
+        CurrentAttack = BaseAttack;
+        CurrentDefense = BaseDefense;
+        CurrentMagic = BaseMagic;
+        CurrentSpeed = BaseSpeed;
+    }
 }
