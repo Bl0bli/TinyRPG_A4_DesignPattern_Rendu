@@ -43,12 +43,14 @@ public class ObjectPooling : MonoBehaviour
         {
             if (!_pooledObjects[i].activeSelf)
             {
+                _pooledObjects[i].Disable();
                 _pooledObjects[i].SetActive(true);
                 return _pooledObjects[i];
             }
         }
 
         Poolable tmp = Instantiate(_objectPrefab, transform);
+        tmp.Disable();
         tmp.SetActive(true);
         _pooledObjects.Add(tmp);
         if(_poolSizeDecreaseRoutine != null) StopCoroutine(_poolSizeDecreaseRoutine);

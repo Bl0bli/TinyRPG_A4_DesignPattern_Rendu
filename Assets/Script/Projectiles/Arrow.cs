@@ -10,11 +10,11 @@ public class Arrow : Poolable
     [Header("Params")]
     [SerializeField] private int _damage = 1;
     
-    override public void Init(Vector3 position, Quaternion rotation,Vector3 direction)
+    override public void Init(Vector3 position, Quaternion rotation, Vector3 direction)
     {
         transform.position = position;
         transform.rotation = rotation;
-        if(_rb != null) _rb.AddRelativeForce(direction);
+        if(_rb != null) _rb.AddForce(direction, ForceMode.Impulse);
         
         base.Init(position, rotation, direction);
     }
@@ -34,7 +34,7 @@ public class Arrow : Poolable
         Disable();
     }
 
-    private void Disable()
+    public override void Disable()
     {
         if (_rb != null)
         {
