@@ -6,11 +6,15 @@ using UnityEngine;
 public class EffectManager : MonoBehaviour
 {
     public const float TickDelay = 0.1f;
-    [SerializeField] private PlayerStats _managedStatSheet;
+    private IStats _managedStatSheet;
 
-    private List<IEffect> _effects;
+    private List<IEffect> _effects = new List<IEffect>();
 
     private float accumulator = 0.0f;
+    
+    public void Init(IStats managedStatSheet) {
+        _managedStatSheet = managedStatSheet;
+    }
 
     private void Update() {
         accumulator += Time.deltaTime;

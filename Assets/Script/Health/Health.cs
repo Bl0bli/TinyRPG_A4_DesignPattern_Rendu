@@ -1,35 +1,26 @@
 using System;
 using UnityEngine;
 
-public class Health : MonoBehaviour, IHealthStats
+public class Health : IHealth
 {
-    [Header("Params")] 
-    [SerializeField] private int _maxHealth = 10;
-
-    [SerializeField] private bool _isPlayer; //C'est un peu dégeu mdr;
+    private readonly int _maxHealth;
     
     private int _currentHealth;
     private bool _isDead;
+    
+    public Health(int maxHealth) {
+        _maxHealth = maxHealth;
+        _currentHealth = _maxHealth;
+    }
 
     public event Action OnDie;
     public event Action OnTakeDamage;
 
     public bool IsDead => _isDead;
 
-    int IHealthStats.BaseHealth
-    {
-        get => _maxHealth;
-        set => _maxHealth = value;
-    }
-
-    int IHealthStats.CurrentHealth { 
+    public int CurrentHealth { 
         get => _currentHealth; 
         set => _currentHealth = value;
-    }
-
-    private void Start() {
-        if (_isPlayer) Resources.Load<PlayerStats>("PlayerStats").Init(this);
-        else _currentHealth = _maxHealth;
     }
 
     public void TakeDamage(int damage)
@@ -42,6 +33,7 @@ public class Health : MonoBehaviour, IHealthStats
 
         if (_currentHealth <= 0) return;
         _currentHealth -= damage;
+        Debug.Log($"Took Damages : {CurrentHealth}");
         OnTakeDamage?.Invoke();
         if (_currentHealth <= 0)
         {
