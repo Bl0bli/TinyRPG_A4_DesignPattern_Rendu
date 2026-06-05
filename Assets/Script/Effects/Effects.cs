@@ -63,9 +63,9 @@ public class Slow : IEffect
 {
     private readonly float _power;
     private readonly float _duration;
-    
+        
     public Slow(float power, float duration) {
-        _power = Mathf.Clamp(_power, 0, 1);
+        _power = Mathf.Clamp(power, 0.0f, 1.0f);
         _duration = duration;
     }
 

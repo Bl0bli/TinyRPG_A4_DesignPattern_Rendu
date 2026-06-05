@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb63c2ea6226a0e4e93ac2de8ed74888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerAttack: {fileID: -5611851267359518633, guid: 781ba6934860abe4c94c14d157d72a13,
+  _playerAttack: {fileID: 1283504391558115716, guid: 7e56b845b2e7e38419c64da6ec5fe029,
     type: 3}
   _character: {fileID: 5953837355414074049}
   _cooldown: 0.5
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb19b2224bff344cbefbe19199bee1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 5953837355414074049}
+  _character: {fileID: 5953837355414074049}
 --- !u!4 &5943897753975625083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2221839628788110084, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
