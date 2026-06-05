@@ -20,12 +20,14 @@ public abstract class AAttack : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (!other.CompareTag(_targetTag)) return;
         IHealth health = other.GetComponent<IHealth>();
-        if (health == null) return;
-        Hit(health);
-
+        if (health != null) Hit(health);
+        IEffectManager em = other.GetComponent<IEffectManager>();
+        if(em != null) AddEffect(em);
     }
 
     protected virtual void Hit(IHealth health) {}
     
     protected virtual void Begin(){}
+    
+    protected virtual void AddEffect(IEffectManager em){}
 }

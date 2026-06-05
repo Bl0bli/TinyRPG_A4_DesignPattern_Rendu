@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerAttack: {fileID: -5611851267359518633, guid: 781ba6934860abe4c94c14d157d72a13,
     type: 3}
+  _character: {fileID: 5953837355414074049}
   _cooldown: 0.5
   _onAttack:
     m_PersistentCalls:
@@ -313,10 +314,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stats:
     <BaseHealth>k__BackingField: 10
-    <BaseAttack>k__BackingField: 0
+    <BaseAttack>k__BackingField: 3
     <BaseMagic>k__BackingField: 0
     <BaseDefense>k__BackingField: 0
-    <BaseSpeed>k__BackingField: 0
+    <BaseSpeed>k__BackingField: 5
 --- !u!114 &2094679998746734835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +353,7 @@ MonoBehaviour:
   - rid: 6743829378087256870
   - rid: 6743829378087256871
   - rid: 6743829379689480300
+  - rid: 6497999491241869585
   m_OriginalGraph: {fileID: 3489618783189159994, guid: 3b7b75ebd97d19c4d9a8a8d2589f08c9,
     type: 2}
   m_IsInitialised: 0
@@ -359,6 +361,15 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 6497999491241869585
+      type: {class: 'BlackboardVariable`1[[Minion, Assembly-CSharp]]', ns: Unity.Behavior,
+        asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 13239869995206336821
+          m_Value1: 14299144030263086653
+        Name: Minion
+        m_Value: {fileID: 5953837355414074049}
     - rid: 6743829378087256869
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]',
         ns: Unity.Behavior, asm: Unity.Behavior}
