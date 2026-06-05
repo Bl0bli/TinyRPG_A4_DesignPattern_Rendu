@@ -1,30 +1,38 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class HealthProxy : MonoBehaviour, IHealth
+public class HealthProxy : MonoBehaviour, IHealth, IEffectManager
 {
+    [FormerlySerializedAs("_health")]
     [Header("References")]
-    [SerializeField] private Character _health;
+    [SerializeField] private Character _character;
 
 
-    public int CurrentHealth => _health.CurrentHealth;
+    public int CurrentHealth => _character.CurrentHealth;
     
     public void TakeDamage(int damage)
     {
-        if (_health == null)
+        if (_character == null)
         {
             Debug.LogError($"Health component not found, can't take damage");
             return;
         }
-        _health.TakeDamage(damage);
+        _character.TakeDamage(damage);
     }
 
     public void Heal(int amount)
     {
-        if (_health == null)
+        if (_character == null)
         {
             Debug.LogError($"Health component not found, can't heal");
             return;
         }
-        _health.Heal(amount);
+        _character.Heal(amount);
+    }
+    public void AddEffect(IEffect effect) {
+        _character.AddEffect(effect);
+    }
+    public void RemoveEffect(IEffect effect) {
+        _character.RemoveEffect(effect);
     }
 }

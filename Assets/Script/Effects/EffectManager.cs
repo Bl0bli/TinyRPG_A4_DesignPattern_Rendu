@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EffectManager : MonoBehaviour
+public interface IEffectManager
+{
+    public void AddEffect(IEffect effect);
+    public void RemoveEffect(IEffect effect);
+}
+
+public class EffectManager : MonoBehaviour, IEffectManager
 {
     public const float TickDelay = 0.1f;
     private IStats _managedStatSheet;

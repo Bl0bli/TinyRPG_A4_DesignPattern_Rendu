@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class Character : MonoBehaviour, IHealth, IStats
+public abstract class Character : MonoBehaviour, IHealth, IStats, IReadOnlyStats, IEffectManager
 {
     private IHealth _health;
     private IStats _stats;
@@ -50,5 +50,11 @@ public abstract class Character : MonoBehaviour, IHealth, IStats
     
     public void ResetStats() {
         _stats.ResetStats();
+    }
+    public void AddEffect(IEffect effect) {
+        _effectManager.AddEffect(effect);
+    }
+    public void RemoveEffect(IEffect effect) {
+        _effectManager.RemoveEffect(effect);
     }
 }

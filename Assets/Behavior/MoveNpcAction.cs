@@ -6,11 +6,13 @@ using Unity.Properties;
 using UnityEngine.AI;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "MoveNPC", story: "Move [NPC] to [Dectetor] target", category: "Action", id: "3427e36e93519348db46335d8d7c0465")]
+[NodeDescription(name: "MoveNPC", story: "Move [NPC] to [Dectetor] target and set [Speed]", category: "Action", id: "3427e36e93519348db46335d8d7c0465")]
 public partial class MoveNpcAction : Action
 {
+    [SerializeReference] public BlackboardVariable<Minion> Minion;
     [SerializeReference] public BlackboardVariable<GameObject> NPC;
     [SerializeReference] public BlackboardVariable<Detector> Dectetor;
+    
     [SerializeReference] public BlackboardVariable<string> AnimatorSpeedParam = new BlackboardVariable<string>("WalkSpeed");
     [SerializeReference] public BlackboardVariable<float> StopDistance = new BlackboardVariable<float>(2f);
     
@@ -45,6 +47,7 @@ public partial class MoveNpcAction : Action
         }
         
         _agent.SetDestination(target.transform.position);
+        _agent.speed = Minion.Value.CurrentSpeed;
         if (_animator != null)
         {
             _animator.SetFloat(AnimatorSpeedParam.Value, _agent.velocity.magnitude);

@@ -6,6 +6,8 @@ public class EnnemyAttack : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private AAttack _playerAttack;
+
+    [SerializeField] private Character _character;
     
     [Header("Params")]
     [SerializeField] private float _cooldown;
@@ -19,9 +21,8 @@ public class EnnemyAttack : MonoBehaviour
     {
         if (!_canAttack) return;
         StartCoroutine(CooldownRoutine());
-        
         AAttack attack = Instantiate(_playerAttack, transform, false);
-        attack.SourceStats = Resources.Load<PlayerStats>("PlayerStats"); //TODO le faire au start
+        attack.SourceStats = _character;
         _onAttack?.Invoke(attack);
     }
     
