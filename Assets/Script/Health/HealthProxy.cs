@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class HealthProxy : MonoBehaviour, IHealth, IEffectManager
+public class HealthProxy : MonoBehaviour, IHealth
 {
     [FormerlySerializedAs("_health")]
     [Header("References")]
@@ -39,12 +39,5 @@ public class HealthProxy : MonoBehaviour, IHealth, IEffectManager
     public void BindOnTakeDamage(Action callback)
     {
         _character.BindOnTakeDamage(callback);
-    }
-
-    public void AddEffect(IEffect effect) {
-        _character.AddEffect(effect);
-    }
-    public void RemoveEffect(IEffect effect) {
-        _character.RemoveEffect(effect);
     }
 }

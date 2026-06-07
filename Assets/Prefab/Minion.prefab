@@ -289,6 +289,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3863639832518445766}
+    - targetCorrespondingSourceObject: {fileID: 126719504334403983, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9162091124877560394}
     - targetCorrespondingSourceObject: {fileID: 1105718103604369012, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
         type: 3}
       insertIndex: -1
@@ -312,12 +316,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25b479c676654e409decc81771e5c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitbox: {fileID: 0}
+  _anmController: {fileID: 0}
   _stats:
     <BaseHealth>k__BackingField: 10
     <BaseAttack>k__BackingField: 3
     <BaseMagic>k__BackingField: 0
     <BaseDefense>k__BackingField: 0
     <BaseSpeed>k__BackingField: 5
+  _agent: {fileID: 0}
 --- !u!114 &2094679998746734835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +451,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bb19b2224bff344cbefbe19199bee1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character: {fileID: 5953837355414074049}
+--- !u!114 &9162091124877560394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578634385823875056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef16f5abda13473418c0e8027081ff43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 5953837355414074049}
