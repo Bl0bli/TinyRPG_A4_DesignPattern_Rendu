@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -29,6 +30,17 @@ public class HealthProxy : MonoBehaviour, IHealth, IEffectManager
         }
         _character.Heal(amount);
     }
+
+    public void BindOnDie(Action callback)
+    {
+        _character.BindOnDie(callback);
+    }
+
+    public void BindOnTakeDamage(Action callback)
+    {
+        _character.BindOnTakeDamage(callback);
+    }
+
     public void AddEffect(IEffect effect) {
         _character.AddEffect(effect);
     }

@@ -3,6 +3,9 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour, IHealth, IStats, IReadOnlyStats, IEffectManager
 {
+    [SerializeField] protected GameObject _hitbox;
+    [SerializeField] protected AnimationController _anmController;
+    
     private IHealth _health;
     private IStats _stats;
     private EffectManager _effectManager;
@@ -24,6 +27,17 @@ public abstract class Character : MonoBehaviour, IHealth, IStats, IReadOnlyStats
     public void Heal(int amount) {
         _health.Heal(amount);
     }
+
+    public void BindOnDie(Action callback)
+    {
+        _health.BindOnDie(callback);
+    }
+
+    public void BindOnTakeDamage(Action callback)
+    {
+        _health.BindOnTakeDamage(callback);
+    }
+
     public IHealth Health => _health;
     public int BaseAttack => _stats.BaseAttack;
     public int BaseMagic => _stats.BaseMagic;

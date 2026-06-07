@@ -57,6 +57,16 @@ public class Health : IHealth
         }
     }
 
+    public void BindOnDie(Action callback)
+    {
+        OnDie += callback;
+    }
+
+    public void BindOnTakeDamage(Action callback)
+    {
+        OnTakeDamage += callback;
+    }
+
     private void Die()
     {
         _isDead = true;

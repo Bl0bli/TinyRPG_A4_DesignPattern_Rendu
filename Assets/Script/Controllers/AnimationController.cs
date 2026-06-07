@@ -7,7 +7,6 @@ public class AnimationController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Animator _animator;
-    [SerializeField] private Health _health;
 
     [Header("Params")] [SerializeField] private float _duration = 1f;
     
@@ -18,24 +17,19 @@ public class AnimationController : MonoBehaviour
         PlayerController pc = GetComponent<PlayerController>();
         
         if(pc != null) pc.OnMove += SetWalkSpeed;
-
-        if (_health != null)
-        {
-            _health.OnDie += SetDie;
-            _health.OnTakeDamage += SetHit;
-        }
+        
     }
 
     public void OnAttack(AAttack attack) {
         _animator.SetTrigger(attack.Trigger);
     }
     
-    private void SetDie()
+    public void SetDie()
     {
         _animator.SetTrigger("Die");
     }
 
-    private void SetHit()
+    public void SetHit()
     {
         _animator.SetTrigger("Hit");
     }
